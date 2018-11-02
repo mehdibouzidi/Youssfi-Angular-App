@@ -6,6 +6,7 @@ import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
+import {AboutService} from "../services/about.service";
 
 @NgModule({
   /* Déclarer les Composants à Utiliser */
@@ -22,7 +23,9 @@ import { ContactComponent } from './contact/contact.component';
     FormsModule, /* Quand on utilise Form Module*/
     HttpModule
   ],
-  providers: [],
+  providers: [
+    AboutService
+  ],
   /* Appeler le Composant 'Root' ou le premier Composant qui contient les reste des composants */
   bootstrap: [AppComponent]
 })

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {AboutService} from '../../services/about.service';
 
 @Component({
   selector: 'app-about',
@@ -7,28 +8,28 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AboutComponent implements OnInit {
 
-  info= {
-    nom: 'BOUZIDI',
-    email: 'mhd@gmail.com',
-    tel: 658987
-  };
-
-  comments= [
-    {date: new Date(), message: 'A' },
-    {date: new Date(), message: 'B' },
-    {date: new Date(), message: 'C'},
-  ];
+  info: any;
+  comments= [];
 
   comment= {date: null, message: ''};
-
-  constructor() { }
+  /*
+  private aboutService: AboutService;
+    constructor(aboutService: AboutService) {
+      this.aboutService = aboutService;
+    }
+  C'est l'équivalent de ce que nous avons fait dans le constructeur
+  * */
+  constructor(private aboutService: AboutService) {
+    this.info = aboutService.getInfo();
+    this.comments = aboutService.getAllComments();
+  }
 
   ngOnInit() {
   }
 
   onAddComment(c) {
-    c.date = new Date();
-    this.comments.push(c);
-    this.comment.message= '';
+    this.aboutService.addComment(c);
+    this.comment.message = '';
+    this.comments = this.aboutService.getAllComments();
   }
 }
