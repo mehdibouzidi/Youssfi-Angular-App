@@ -8,11 +8,13 @@ import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
 import {AboutService} from '../services/about.service';
 import {RouterModule, Routes} from '@angular/router';
+import { GalleryComponent } from './gallery/gallery.component';
 
 const routes: Routes = [
+  {path: 'gallery', component: GalleryComponent},
   {path: 'about', component: AboutComponent},
   {path: 'contacts', component: ContactComponent},
-  {path: '', redirectTo: '/about', pathMatch: 'full'}
+  {path: '', redirectTo: '/gallery', pathMatch: 'full'}
 ];
 
 @NgModule({
@@ -20,7 +22,8 @@ const routes: Routes = [
   declarations: [
     AppComponent,
     AboutComponent,
-    ContactComponent
+    ContactComponent,
+    GalleryComponent
   ]
 
   ,

@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="card">
+    <div class="card-header bg-info text-light">Gallery
+      <div class="float-right">
+        <form class="form-inline" #f="ngForm" (ngSubmit)="onSearch(f.value)">
+          <input class="form-control mr-sm-2" type="search" placeholder="#Hashtag" aria-label="Search" name="hashtag"
+                 ngModel required="true">
+          <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="card-body">
+      <!-- <div class="card-group" *ngIf="picturesPage" >-->
+      <div class="card-group" >
+        <div *ngFor="let picture of picturesPage?.hits" class="col-3 square">
+          <div class="card card-picture" style="overflow: hidden">
+              <img class="card-img-top" src="{{picture.largeImageURL}}" alt="Card image cap">
+              <div class="card-body">
+                <h5 class="card-title"><span><i class="fa fa-heart text-danger"> {{picture.likes}}</i> </span></h5>
+                <p class="card-text" style="word-wrap: break-word;">{{picture.tags}}</p>
+                <p class="card-text"><small class="text-muted">{{picture.user}}</small></p>
+              </div>
+          </div>
+        </div>
+        <!--     </div>-->
+      </div>
+    </div>
+  </div>
