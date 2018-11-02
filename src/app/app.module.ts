@@ -6,7 +6,14 @@ import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
-import {AboutService} from "../services/about.service";
+import {AboutService} from '../services/about.service';
+import {RouterModule, Routes} from '@angular/router';
+
+const routes: Routes = [
+  {path: 'about', component: AboutComponent},
+  {path: 'contacts', component: ContactComponent},
+  {path: '', redirectTo: '/about', pathMatch: 'full'}
+];
 
 @NgModule({
   /* Déclarer les Composants à Utiliser */
@@ -21,7 +28,8 @@ import {AboutService} from "../services/about.service";
   imports: [
     BrowserModule,
     FormsModule, /* Quand on utilise Form Module*/
-    HttpModule
+    HttpModule,
+    RouterModule.forRoot(routes)
   ],
   providers: [
     AboutService

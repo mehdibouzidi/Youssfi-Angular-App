@@ -9,4 +9,6 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
 
+  private LOGO = require('../../resources/angular-logo.png');
+
 }
