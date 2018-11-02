@@ -26,9 +26,9 @@ export class AboutComponent implements OnInit {
   ngOnInit() {
   }
 
-  onAddComment() {
-    this.comment.date = new Date();
-    this.comments.push(this.comment);
-    this.comment= {date: null, message: ''};
+  onAddComment(c) {
+    c.date = new Date();
+    this.comments.push(c);
+    this.comment.message= '';
   }
 }

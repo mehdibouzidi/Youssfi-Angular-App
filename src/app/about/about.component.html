@@ -12,11 +12,16 @@
         </ul>
       </div>
       <br/>
-      <div class="form-group row">
-        <label for="message-input" class="col-form-label col-2">Message </label>
-        <input id="message-input" type="text"  class="form-control col-4" [(ngModel)]="comment.message">
-        <button class="btn btn-info col-1" style="margin-left:20px" [disabled]="!comment.message" (click)="onAddComment()"><i class="fa fa-plus"></i> Add</button>
-      </div>
+
+      <form #f="ngForm" (ngSubmit)="onAddComment(f.value)">
+        <div class="form-group row">
+          <label for="message-input" class="col-form-label col-2">Message </label>
+          <input id="message-input" name="message" ngModel [(ngModel)]="comment.message" type="text"  class="form-control col-4" required="true">
+          <button type="submit" class="btn btn-info col-1" style="margin-left:20px" [disabled]="!f.valid" >
+            <i class="fa fa-plus"></i> Add
+          </button>
+        </div>
+      </form>
 
       <div>
         <h3>Comments:</h3>
