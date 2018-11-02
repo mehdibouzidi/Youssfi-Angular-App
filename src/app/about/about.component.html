@@ -1,16 +1,34 @@
-<div>
-  <ul>
-    <li>Nom: <strong>{{info.nom}}</strong></li>
-    <li>Email: <strong>{{info.email}}</strong></li>
-    <li>Tel: <strong>{{info.tel}}</strong></li>
-  </ul>
-</div>
+<div class="container">
+  <div class="card">
+    <div class="card-header bg-info text-light">About</div>
+    <div class="card-body">
 
-<div>
-  <ul>
-    <li *ngFor="let c of comments">
-      {{c.message}})
-      <span>{{c.date |date:'dd/mm/yy - HH:mm:ss' }}</span>
-    </li>
-  </ul>
+      <div>
+        <h3>Informations:</h3>
+        <ul class="list-group">
+          <li class="list-group-item">Nom: <strong>{{info.nom}}</strong></li>
+          <li class="list-group-item">Email: <strong>{{info.email}}</strong></li>
+          <li class="list-group-item">Tel: <strong>{{info.tel}}</strong></li>
+        </ul>
+      </div>
+      <br/>
+      <div class="form-group row">
+        <label for="message-input" class="col-form-label col-2">Message </label>
+        <input id="message-input" type="text"  class="form-control col-4" [(ngModel)]="comment.message">
+        <button class="btn btn-info col-1" style="margin-left:20px" [disabled]="!comment.message" (click)="onAddComment()"><i class="fa fa-plus"></i> Add</button>
+      </div>
+
+      <div>
+        <h3>Comments:</h3>
+        <ul class="list-group">
+          <li *ngFor="let c of comments" class="list-group-item">
+            {{c.message}}
+            <span class="badge bg-info float-right text-light">{{c.date |date:'dd/mm/yy - HH:mm:ss' }}</span>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+
 </div>

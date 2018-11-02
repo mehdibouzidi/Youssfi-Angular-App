@@ -19,7 +19,7 @@ import { ContactComponent } from './contact/contact.component';
   /* Importer d'autres Modules */
   imports: [
     BrowserModule,
-    FormsModule,
+    FormsModule, /* Quand on utilise Form Module*/
     HttpModule
   ],
   providers: [],
