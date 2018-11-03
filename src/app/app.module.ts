@@ -10,6 +10,7 @@ import {AboutService} from '../services/about.service';
 import {RouterModule, Routes} from '@angular/router';
 import { GalleryComponent } from './gallery/gallery.component';
 import { TagsPipe } from './tags.pipe';
+import {GalleryService} from '../services/gallery.service';
 
 const routes: Routes = [
   {path: 'gallery', component: GalleryComponent},
@@ -37,7 +38,8 @@ const routes: Routes = [
     RouterModule.forRoot(routes)
   ],
   providers: [
-    AboutService
+    AboutService,
+    GalleryService
   ],
   /* Appeler le Composant 'Root' ou le premier Composant qui contient les reste des composants */
   bootstrap: [AppComponent]
