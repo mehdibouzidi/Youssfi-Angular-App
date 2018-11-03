@@ -1,8 +1,12 @@
 .card-picture{
-  height: 400px;
+  height: 300px;
   margin-bottom: 20px;
 }
 
 .card-picture .card-img-top{
   height: 150px;
+}
+
+.card-title .fa{
+  margin-right: 5px;
 }

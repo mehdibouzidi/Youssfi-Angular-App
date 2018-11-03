@@ -9,6 +9,7 @@ import { ContactComponent } from './contact/contact.component';
 import {AboutService} from '../services/about.service';
 import {RouterModule, Routes} from '@angular/router';
 import { GalleryComponent } from './gallery/gallery.component';
+import { TagsPipe } from './tags.pipe';
 
 const routes: Routes = [
   {path: 'gallery', component: GalleryComponent},
@@ -23,7 +24,8 @@ const routes: Routes = [
     AppComponent,
     AboutComponent,
     ContactComponent,
-    GalleryComponent
+    GalleryComponent,
+    TagsPipe
   ]
 
   ,

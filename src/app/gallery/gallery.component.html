@@ -4,7 +4,7 @@
       <div class="float-right">
         <form class="form-inline" #f="ngForm" (ngSubmit)="onSearch(f.value)">
           <input class="form-control mr-sm-2" type="search" placeholder="#Hashtag" aria-label="Search" name="hashtag"
-                 ngModel required="true">
+                 ngModel required="true" [(ngModel)]="tagSearch">
           <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
         </form>
       </div>
@@ -15,15 +15,32 @@
       <div class="card-group" >
         <div *ngFor="let picture of picturesPage?.hits" class="col-3 square">
           <div class="card card-picture" style="overflow: hidden">
-              <img class="card-img-top" src="{{picture.largeImageURL}}" alt="Card image cap">
-              <div class="card-body">
-                <h5 class="card-title"><span><i class="fa fa-heart text-danger"> {{picture.likes}}</i> </span></h5>
-                <p class="card-text" style="word-wrap: break-word;">{{picture.tags}}</p>
-                <p class="card-text"><small class="text-muted">{{picture.user}}</small></p>
-              </div>
+            <img class="card-img-top" src="{{picture.largeImageURL}}" alt="Card image cap">
+            <div class="card-body">
+                <span class="card-title"><i class="fa fa-heart text-danger"> {{picture.likes}}</i>
+                <i class="fa fa-star-o "> {{picture.favorites}}</i>
+                <i class="fa fa-comment-o "> {{picture.comments}}</i>
+                </span>
+              <p class="card-text" style="word-wrap: break-word;">{{picture.tags | TagsPipe}}</p>
+              <p class="card-text"><small class="text-muted">{{picture.user}}</small></p>
+            </div>
           </div>
         </div>
         <!--     </div>-->
       </div>
     </div>
   </div>
+  <nav aria-label="Page navigation example" style="margin-top: 10px">
+    <ul class="pagination justify-content-center">
+      <li class="page-item " [ngClass]="currentPage-1 === 0 ? 'disabled' : ''">
+        <a class="page-link" (click)="goToPage(currentPage-2)" tabindex="-1">Previous</a>
+      </li>
+
+      <li class="page-item" [ngClass]="currentPage-1 === i ? 'active' : ''"
+          *ngFor="let p of pages let i=index"><a class="page-link" (click)="goToPage(i)">{{i+1}}</a></li>
+
+      <li class="page-item" [ngClass]="currentPage === totalPages ? 'disabled' : ''">
+        <a class="page-link" (click)="goToPage(currentPage)">Next</a>
+      </li>
+    </ul>
+  </nav>
